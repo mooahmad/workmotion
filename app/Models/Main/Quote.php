@@ -11,7 +11,7 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Store;
-use App\Models\QuoteIdMask;
+use App\Models\Main\QuoteIdMask;
 use App\Models\QuotePayment;
 
 /**
@@ -115,6 +115,17 @@ class Quote extends Model
 	public function quote_addresses()
 	{
 		return $this->hasMany(QuoteAddress::class,'quote_id');
+	}
+
+
+	public function getQuote_billing_addresses()
+	{
+		return $this->hasMany(QuoteAddress::class,'quote_id')->where('address_type','=','billing')->first();
+	}
+
+	public function getQuote_shipping_addresses()
+	{
+		return $this->hasMany(QuoteAddress::class,'quote_id')->where('address_type','=','shipping')->first();
 	}
 
 	public function quote_id_masks()

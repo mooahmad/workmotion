@@ -65,9 +65,9 @@ class Repository extends Command
             return $this->error('Repository already exists');
         }
         $this->filesystem->makeDirectory(base_path($location), 0755, true, true);
-        if (!$this->filesystem->isDirectory(base_path('Domain/Contracts'))) {
-            $contractLocation = base_path('Domain/Contracts/');
-            $repositoryLocation = base_path('Domain/Repositories/');
+        if (!$this->filesystem->isDirectory(base_path('app/Domain/Contracts'))) {
+            $contractLocation = base_path('app/Domain/Contracts/');
+            $repositoryLocation = base_path('app/Domain/Repositories/');
             $this->filesystem->makeDirectory($contractLocation, 0755, true, true);
             $this->filesystem->makeDirectory($repositoryLocation, 0755, true, true);
         }

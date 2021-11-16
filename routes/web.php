@@ -14,5 +14,10 @@
 */
 
 $router->get('/', function () use ($router) {
-    return $router->app->version();
+    return \Illuminate\Support\Facades\App::getLocale();
+});
+
+$router->group(['namespace'=>'Cart\GuestCart'],function () use ($router){
+
+$router->get('create_guest_cart', 'GuestCartController@createEmptyCart');
 });

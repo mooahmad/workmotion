@@ -23,9 +23,9 @@ $app = new Laravel\Lumen\Application(
     dirname(__DIR__)
 );
 
-// $app->withFacades();
+ $app->withFacades();
 
-// $app->withEloquent();
+ $app->withEloquent();
 
 /*
 |--------------------------------------------------------------------------
@@ -72,13 +72,13 @@ $app->configure('app');
 |
 */
 
-// $app->middleware([
-//     App\Http\Middleware\ExampleMiddleware::class
-// ]);
+ $app->middleware([
+     App\Http\Middleware\Locale::class
+ ]);
 
-// $app->routeMiddleware([
-//     'auth' => App\Http\Middleware\Authenticate::class,
-// ]);
+ $app->routeMiddleware([
+     'lang' => App\Http\Middleware\Locale::class,
+ ]);
 
 /*
 |--------------------------------------------------------------------------
@@ -96,6 +96,7 @@ $app->register(App\Providers\AuthServiceProvider::class);
 $app->register(App\Providers\EventServiceProvider::class);
 $app->register(Flipbox\LumenGenerator\LumenGeneratorServiceProvider::class);
 
+
 /*
 |--------------------------------------------------------------------------
 | Load The Application Routes
@@ -109,8 +110,22 @@ $app->register(Flipbox\LumenGenerator\LumenGeneratorServiceProvider::class);
 
 $app->router->group([
     'namespace' => 'App\Http\Controllers',
+    'prefix' => '/{lang}',
+    'middleware'=>['lang'],
 ], function ($router) {
     require __DIR__.'/../routes/web.php';
 });
+
+
+//// Load The Application Routes
+//$app->router->group([
+//    'namespace' => 'App\Http\Controllers',
+//], function ($router) {
+//    require __DIR__.'/../routes/web.php';
+//    require __DIR__.'/../routes/users.php'; // mention file names
+//    require __DIR__.'/../routes/posts.php';
+//});
+
+
 
 return $app;

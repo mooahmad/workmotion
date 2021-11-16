@@ -5,7 +5,7 @@
 *Homzmart Magento Integration.
  */
 
-namespace App\Models;
+namespace App\Models\Main;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Main\Quote;
@@ -24,7 +24,8 @@ class QuoteIdMask extends Model
 	];
 
 	protected $fillable = [
-		'masked_id'
+		'quote_id',
+        'masked_id'
 	];
 
 	public function quote()
