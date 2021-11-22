@@ -82,8 +82,6 @@ return [
 
     'locales' => ['en', 'ar','admin'],
 
-    'store' => ['en' => 2, 'ar' => 1,'admin'=>0],
-
     /*
     |--------------------------------------------------------------------------
     | Application Fallback Locale
@@ -111,5 +109,7 @@ return [
     'key' => env('APP_KEY'),
 
     'cipher' => 'AES-256-CBC',
+
+    'fixer' =>env('FIXER_KEY','b66a851682839bd30654890f6e7c9d27')
 
 ];

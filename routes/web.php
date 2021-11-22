@@ -13,11 +13,16 @@
 |
 */
 
-$router->get('/', function () use ($router) {
-    return \Illuminate\Support\Facades\App::getLocale();
-});
+$router->get('/aa', function () use ($router) {
+    return 'mo Sala';});
 
-$router->group(['namespace'=>'Cart\GuestCart'],function () use ($router){
 
-$router->get('create_guest_cart', 'GuestCartController@createEmptyCart');
-});
+
+
+$router->get('countries', 'SalaryController@getCountries');
+
+$router->get('/category_positions', 'SalaryController@getPostions');
+
+
+$router->get('/country/{country}/position/{catpos}/advanced', 'SalaryController@getResutl');
+
