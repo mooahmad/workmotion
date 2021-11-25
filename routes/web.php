@@ -24,5 +24,11 @@ $router->get('countries', 'SalaryController@getCountries');
 $router->get('/category_positions', 'SalaryController@getPostions');
 
 
+
 $router->get('/country/{country}/position/{catpos}/advanced', 'SalaryController@getResutl');
+
+$router->post('/calculate_it', 'SarayCalcultorController@calculate');
+$router->get('/getCountry', 'SarayCalcultorController@getCountry');
+$router->get('/main_currency', 'SarayCalcultorController@getMainCurrency');
+
 
