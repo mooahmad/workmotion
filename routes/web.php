@@ -24,5 +24,6 @@ $router->get('countries', 'SalaryController@getCountries');
 $router->get('/category_positions', 'SalaryController@getPostions');
 
 
+$router->post('/country/position/advanced', 'SalaryController@getResultone');
 $router->get('/country/{country}/position/{catpos}/advanced', 'SalaryController@getResutl');
 
