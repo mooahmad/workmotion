@@ -23,24 +23,22 @@ class SarayCalcultorController extends Controller
         $countries = array_keys($reference->getValue());
         $data = [];
         foreach ($countries as $country) {
-            $data[] = [$country => $country];
+            $data[] = ['name' => $country];
         }
         return response(["data" => $data]);
     }
 
     public function calculate(Request $request)
     {
-
-      return  $this->calculatorService->calculate($request->all());
-
+        return  $this->calculatorService->calculate($request->all());
     }
     public function getMainCurrency(Request $request)
     {
         $reference = $this->database->getReference('main_currency');
         $lists = [];
         foreach (array_values($reference->getValue()) as $list){
-            $lists[] = [$list['name']=>$list['name']];
+            $lists[] = ['name'=>$list['name']];
         }
-        return   response($lists);
+        return   response(['data'=>$lists]);
     }
 }

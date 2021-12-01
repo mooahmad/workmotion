@@ -15,7 +15,8 @@ class SalaryCalculatorRequest
         $validator = Validator::make($request, [
             'first_country' => 'required',
             'second_country' => "required|different:first_country",
-            "currency" => "required",
+            "currency" => "required|in:EUR,USD,GBP",
+            "value" => "numeric",
             'allow'=>"required|boolean"
         ]);
         if ($validator->fails()) return $validator->errors();
