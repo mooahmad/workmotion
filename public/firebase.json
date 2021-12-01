@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "netsalarycalc",
+  "private_key_id": "0901817ef79f534b324ac84857c5d5f07828e4a9",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCWTViVhHoyL9eS\ngaR/OzKz+8r57gYgN3YwMObuDoYgsVS1ugr+Jv6mI3depCBz8F4dDNi2HQ27hcP/\n39bO5kAWRT511mWOKH+oU5/H34CQYmuHk3lKgtpEV6kAXXtRNg1r+rx/bL+AMmoA\n8u6A1Iv8uOPRy4oKeTgDUa8+c2zhhxcrDZw4dfsZSEF1tr8AfcdNCJRkuXOxFLpE\nYsJy3lCPR43h7kgk10oqrDcJkFS9PHnk/eQpK7zleJDnuTd6FPaPrgm7neNwmQ6S\nTaHHzHwF1ZscKoCEjUipzSsz+OM9lWWpnbxWrvCyXMbzmkiyOnTAUyVVqmqiAKlf\nnKVlLHIvAgMBAAECggEABuHyKx/wgFO42llYbzLb8HiKbokhSeea7p9zGCgrjL9e\nhkjyLEEciuJM/nGje3gZfy5G6t6kgBBp4vxrG1yunH2S6iPse5ihf3ANUm0nRdHF\nuVbIpO3lX2AhXVRqi2H7xFvI0yxLDjOdPZv+sSuuC19O9SsqZVkpWdw5jPibz9gs\nLpXjKUh7p3ICgifwrMRVK5KjVv+iJtXKDxNV9HQB6gFtmXdiDj8TFTnxTxatZNo+\nDVNe7n4rzdkLIvWS588MzquyH1P7Th7FVZpI7IP4C8D+Rhz6UR9r54PvxNiuUkch\n3+lxC7LeC0AG1+y6kPEfi63/Bm9oGwHVBUrCPjcx/QKBgQDSwmHRUerV+FIuQRAj\nr9GWJfA5k0XY/0Inv9ex75GANjwASpyDHnS32CY0dkGKDkouilt66Nr89ta+elF6\nFSmGYFAW651DgV+sFHWWwzC7GLCLGsJHBV4w51SmvqeJU2mY/To7R8KyBGkqdIZf\nhplofZq1uYxsv+0bljtdiC+sFQKBgQC2kLqx4y0L7raMBNjwy4q8GdZcc3MZPXM9\nnoqRrOXqjI7fkmRrtfdRNJzuERkh+EbXwyIAwb62q57Sz50y2RLLuZ/bs+ezN/K/\ne6TwePdva0H1gn4C51GoRNPrW3mjU5TdsAjUkCGwu/a4vZz4Z/0dbGRti3I4de5q\nhaddJ0ECMwKBgBFpKXeHUuUWPIPBsDmifqfuvmejOPPyMl7iRElYxyZWVKKZh1B1\npaLCYnWXB1cGUy6BE4mVzvFy2s6lgDGbqfCF6FfcYwN+no6yqfwoZ9As+/ih30bK\ntLtJgP69ZU287E5NLRBUn0rhfmaZdbhSgD3Xkn5Ms8MQH+BVitXxOC75AoGBAJMF\nIGPq57bpSTafHLlloNb0E62mB3W3B9wCleLUkt78zH39HUOkaYOK1CnfuRajIyHU\nccicPeJLeP6Z1SVCrKFFXhgG3Dt2fdV4VA6Xy+N9Q8Pbj3D1KcxRiTvLEbzWrVaN\n0b6kR41VAU4q3IMq8ypDxOh22MfhKNu9wFcDKpYDAoGAMDTOkBi5C9HYQ96teALV\n5rbUYPOVzx4Rc0G6BTCpnCjw5UCdukLHagpUOUiNTsRqNkc19DM3IQ+yytDpabej\n9zEtmDM6ZIP8LwKKReqph2jftlbQ6Ay4M+wIWsPiRhdOBQ70Mxj1aZgADjriz9ha\n/Bj/g/EfJC6lXqjgCl15jSk=\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-40vyd@netsalarycalc.iam.gserviceaccount.com",
+  "client_id": "103247786261316752636",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-40vyd%40netsalarycalc.iam.gserviceaccount.com",
+}

@@ -110,6 +110,6 @@ return [
 
     'cipher' => 'AES-256-CBC',
 
-    'fixer' =>env('FIXER_KEY','b66a851682839bd30654890f6e7c9d27')
+    'fixer' =>env('FIXER_KEY','449bfd3cd8ecef4552d66fd205bdf240')
 
 ];

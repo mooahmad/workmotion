@@ -1,0 +1,11 @@
+POST http://127.0.0.1:8080/rest/V1/guest-carts/GaGtExACpghgKduubuXahRrwIi3kJ3mG/items
+
+
+{
+	"cartItem": {
+		"quote_id": "0eTeE1zyKEjexjuCy5ChwPngbTtI3uEN",
+		"sku": "10",
+		"qty": 2
+
+       	}
+}
