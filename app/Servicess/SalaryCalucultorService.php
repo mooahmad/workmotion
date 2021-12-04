@@ -43,7 +43,7 @@ class SalaryCalucultorService
             $message['first_country']=['invalid country '. $request['first_country'].' select again'];
         }
         if($searchCountrytwo == false){
-            $message['second_country']=['invalid country '. $request['second_counry'].' select again'];
+            $message['second_country']= ['invalid country '. $request['second_country'].' select again'];
         }
         if(!empty($message)) return response($message,403);        
         
