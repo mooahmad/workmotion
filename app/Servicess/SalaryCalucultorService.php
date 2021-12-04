@@ -70,9 +70,9 @@ class SalaryCalucultorService
         $taxTwo = $this->calTax($resultTwo, $countryRuleTwo, $securityTwo, $countryTwo, $rateOne);
 
 
-        $taxableOne = $this->getConvertedBody($countries[$countryOne]['currency'], $request['currency'], $resultOne);
+        $taxableOne =($request['allow'] == true)?$this->getConvertedBody($countries[$countryOne]['currency'], $request['currency'], $resultOne):['result'=>$request['value']];
 
-        $taxableTwo = $this->getConvertedBody($countries[$countryTwo]['currency'], $request['currency'], $resultTwo);
+        $taxableTwo =($request['allow'] == true)? $this->getConvertedBody($countries[$countryTwo]['currency'], $request['currency'], $resultTwo):['result'=>$request['value']];
 
         $converted_securityOne = $this->getConvertedBody($countries[$countryOne]['currency'], $request['currency'], array_sum($securityOne));
 
@@ -89,7 +89,10 @@ class SalaryCalucultorService
         $finalResultTwo = (float)$taxableTwo['result'] - ((float)$converted_TaxTwo['result'] +(float) $converted_securityTwo['result']);
 
         $data = ['country_one' => ['taxable_one' => $taxableOne['result'], 'security_one' => $converted_securityOne['result'], 'tax_one' => $converted_TaxOne['result'], 'final_one' => $finalResultOne],
-            'country_two' => ['taxable_two' => $taxableTwo['result'], 'security_two' => $converted_securityTwo['result'], 'tax_two' => $converted_TaxTwo['result'], 'final_two' => $finalResultTwo],'currency'=>$request['currency']];
+            'country_two' => ['taxable_two' => $taxableTwo['result'], 'security_two' => $converted_securityTwo['result'], 'tax_two' => $converted_TaxTwo['result'], 'final_two' => $finalResultTwo],'currency'=>$request['currency'],
+        'gross'=>['gross_one'=>$resultOne,"currency_one"=>$countries[$countryOne]['currency']
+       ,'gross_two'=>$resultTwo,'currency_two'=>$countries[$countryTwo]['currency']]
+        ];
         return response($data);
 
     }
