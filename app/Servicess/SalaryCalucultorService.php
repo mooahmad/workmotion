@@ -38,9 +38,15 @@ class SalaryCalucultorService
         $countries = $reference->getValue();
         $searchCountryone = in_array($countryOne, array_keys($reference->getValue()));
         $searchCountrytwo = in_array($countryTwo, array_keys($reference->getValue()));
-
-        if ($searchCountryone == false) return response(['first_country' =>['invalid country '. $request['first_country'].' select again']], 403);
-     if($searchCountrytwo == false)   return response(['second_counry' =>['invalid country '. $request['second_country'].' select again']], 403);
+        $message = [];
+        if ($searchCountryone == false){
+            $message['first_country']=['invalid country '. $request['first_country'].' select again'];
+        }
+        if($searchCountrytwo == false){
+            $message['second_country']=['invalid country '. $request['second_counry'].' select again'];
+        }
+        if(!empty($message)) return response($message,403);        
+        
         if (!in_array($countryOne, array_keys($rules)) || !in_array($countryTwo, array_keys($rules))) return response(['message' => 'something unexpected happened. please try again2.'], 400);
 
         $currencyOne = $this->convert($request['currency'], $countries[$countryOne]['currency'], $request['value']);
