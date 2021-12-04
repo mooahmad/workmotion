@@ -91,7 +91,8 @@ class SalaryCalucultorService
         $data = ['country_one' => ['taxable_one' => $taxableOne['result'], 'security_one' => $converted_securityOne['result'], 'tax_one' => $converted_TaxOne['result'], 'final_one' => $finalResultOne],
             'country_two' => ['taxable_two' => $taxableTwo['result'], 'security_two' => $converted_securityTwo['result'], 'tax_two' => $converted_TaxTwo['result'], 'final_two' => $finalResultTwo],'currency'=>$request['currency'],
         'gross'=>['gross_one'=>$resultOne,"currency_one"=>$countries[$countryOne]['currency']
-       ,'gross_two'=>$resultTwo,'currency_two'=>$countries[$countryTwo]['currency']]
+       ,'gross_two'=>$resultTwo,'currency_two'=>$countries[$countryTwo]['currency'],
+       'main_currency'=>$request['currency'],'main_value'=>$request['value']],"first_country"=>$request['first_country'],"second_country"=>$request['second_country']
         ];
         return response($data);
 
