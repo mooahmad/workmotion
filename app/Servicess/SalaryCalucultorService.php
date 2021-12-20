@@ -43,12 +43,13 @@ class SalaryCalucultorService
         $errors =[];
         if ($searchCountryone == false) $errors['first_country'] = [ "The first country is invalid."];
         if ($searchCountrytwo== false) $errors['second_country'] = [ "The second country is invalid."];
-
         if (!empty($errors))return response($errors, 403);
+
         if (!in_array($countryOne, array_keys($rules))) $errors['first_country'] = [ "The first country is invalid."];
         if (!in_array($countryTwo, array_keys($rules))) $errors['second_country'] = [ "The second country is invalid."];
-
         if (!empty($errors))return response($errors, 403);
+
+        if (!in_array($countryOne, array_keys($rules)) || !in_array($countryTwo, array_keys($rules))) return response(['message' => 'something unexpected happened. please try again2.'], 400);
 
         $currencyOne = $this->convert($request['currency'], $countries[$countryOne]['currency'], $request['value']);
         $currencyTwo = $this->convert($request['currency'], $countries[$countryTwo]['currency'], $request['value']);
@@ -78,9 +79,9 @@ class SalaryCalucultorService
         $taxTwo = $this->calTax($resultTwo, $countryRuleTwo, $securityTwo, $countryTwo, $rateOne);
 
 
-        $taxableOne = $this->getConvertedBody($countries[$countryOne]['currency'], $request['currency'], $resultOne);
+        $taxableOne =($request['allow'] == true)?$this->getConvertedBody($countries[$countryOne]['currency'], $request['currency'], $resultOne):['result'=>$request['value']];
 
-        $taxableTwo = $this->getConvertedBody($countries[$countryTwo]['currency'], $request['currency'], $resultTwo);
+        $taxableTwo =($request['allow'] == true)? $this->getConvertedBody($countries[$countryTwo]['currency'], $request['currency'], $resultTwo):['result'=>$request['value']];
 
         $converted_securityOne = $this->getConvertedBody($countries[$countryOne]['currency'], $request['currency'], array_sum($securityOne));
 
@@ -96,8 +97,12 @@ class SalaryCalucultorService
         $finalResultOne = (float)$taxableOne['result'] - ((float)$converted_TaxOne['result'] +(float) $converted_securityOne['result']);
         $finalResultTwo = (float)$taxableTwo['result'] - ((float)$converted_TaxTwo['result'] +(float) $converted_securityTwo['result']);
 
-        $data = ['country_one' => ['taxable_one' => $taxableOne['result'], 'security_one' => $converted_securityOne['result'], 'tax_one' => $converted_TaxOne['result'], 'final_one' => $finalResultOne],
-            'country_two' => ['taxable_two' => $taxableTwo['result'], 'security_two' => $converted_securityTwo['result'], 'tax_two' => $converted_TaxTwo['result'], 'final_two' => $finalResultTwo],'currency'=>$request['currency']];
+        $data = ['country_one' => ['taxable_one' => round($taxableOne['result'],4), 'security_one' =>round($converted_securityOne['result'],4), 'tax_one' => round($converted_TaxOne['result'],4), 'final_one' => round($finalResultOne,4)],
+            'country_two' => ['taxable_two' => round($taxableTwo['result'],4), 'security_two' => round($converted_securityTwo['result']), 'tax_two' => round($converted_TaxTwo['result'],4), 'final_two' => round($finalResultTwo,4)],'currency'=>$request['currency'],
+        'gross'=>['gross_one'=>round($resultOne,4),"currency_one"=>$countries[$countryOne]['currency']
+       ,'gross_two'=>round($resultTwo,4),'currency_two'=>$countries[$countryTwo]['currency'],
+       'main_currency'=>$request['currency'],'main_value'=>$request['value']],"first_country"=>$request['first_country'],"second_country"=>$request['second_country']
+        ];
         return response($data);
 
     }
