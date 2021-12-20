@@ -29,9 +29,10 @@ class SalaryCalucultorService
     public function calculate(array $request)
     {
         $validate = SalaryCalculatorRequest::validateGuestCartItem($request);
+        if ($validate) return response($validate, 403);
         $countryOne = $request['first_country'];
         $countryTwo = $request['second_country'];
-        if ($validate) return response($validate, 403);
+
         $reference = $this->database->getReference('country');
         $getRules = $this->database->getReference('deduction_rules');
         $rules = $getRules->getValue();
@@ -39,8 +40,15 @@ class SalaryCalucultorService
         $searchCountryone = in_array($countryOne, array_keys($reference->getValue()));
         $searchCountrytwo = in_array($countryTwo, array_keys($reference->getValue()));
 
-        if ($searchCountryone == false || $searchCountrytwo == false) return response(['message' => 'something unexpected happened. please try again1.'], 400);
-        if (!in_array($countryOne, array_keys($rules)) || !in_array($countryTwo, array_keys($rules))) return response(['message' => 'something unexpected happened. please try again2.'], 400);
+        $errors =[];
+        if ($searchCountryone == false) $errors['first_country'] = [ "The first country is invalid."];
+        if ($searchCountrytwo== false) $errors['second_country'] = [ "The second country is invalid."];
+
+        if (!empty($errors))return response($errors, 403);
+        if (!in_array($countryOne, array_keys($rules))) $errors['first_country'] = [ "The first country is invalid."];
+        if (!in_array($countryTwo, array_keys($rules))) $errors['second_country'] = [ "The second country is invalid."];
+
+        if (!empty($errors))return response($errors, 403);
 
         $currencyOne = $this->convert($request['currency'], $countries[$countryOne]['currency'], $request['value']);
         $currencyTwo = $this->convert($request['currency'], $countries[$countryTwo]['currency'], $request['value']);
