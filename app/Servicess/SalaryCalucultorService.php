@@ -30,8 +30,8 @@ class SalaryCalucultorService
     {
         $validate = SalaryCalculatorRequest::validateGuestCartItem($request);
         if ($validate) return response($validate, 403);
-        $countryOne = $request['first_country'];
-        $countryTwo = $request['second_country'];
+        $countryOne = ucfirst($request['first_country']);
+        $countryTwo = ucfirst($request['second_country']);
 
         $reference = $this->database->getReference('country');
         $getRules = $this->database->getReference('deduction_rules');
