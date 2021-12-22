@@ -97,10 +97,10 @@ class SalaryCalucultorService
         $finalResultOne = (float)$taxableOne['result'] - ((float)$converted_TaxOne['result'] +(float) $converted_securityOne['result']);
         $finalResultTwo = (float)$taxableTwo['result'] - ((float)$converted_TaxTwo['result'] +(float) $converted_securityTwo['result']);
 
-        $data = ['country_one' => ['taxable_one' => round($taxableOne['result'],4), 'security_one' =>round($converted_securityOne['result'],4), 'tax_one' => round($converted_TaxOne['result'],4), 'final_one' => round($finalResultOne,4)],
-            'country_two' => ['taxable_two' => round($taxableTwo['result'],4), 'security_two' => round($converted_securityTwo['result']), 'tax_two' => round($converted_TaxTwo['result'],4), 'final_two' => round($finalResultTwo,4)],'currency'=>$request['currency'],
-        'gross'=>['gross_one'=>round($resultOne,4),"currency_one"=>$countries[$countryOne]['currency']
-       ,'gross_two'=>round($resultTwo,4),'currency_two'=>$countries[$countryTwo]['currency'],
+        $data = ['country_one' => ['taxable_one' => round($taxableOne['result'],2), 'security_one' =>round($converted_securityOne['result'],2), 'tax_one' => round($converted_TaxOne['result'],2), 'final_one' => round($finalResultOne,2)],
+            'country_two' => ['taxable_two' => round($taxableTwo['result'],2), 'security_two' => round($converted_securityTwo['result']), 'tax_two' => round($converted_TaxTwo['result'],2), 'final_two' => round($finalResultTwo,2)],'currency'=>$request['currency'],
+        'gross'=>['gross_one'=>round($resultOne,2),"currency_one"=>$countries[$countryOne]['currency']
+       ,'gross_two'=>round($resultTwo,2),'currency_two'=>$countries[$countryTwo]['currency'],
        'main_currency'=>$request['currency'],'main_value'=>$request['value']],"first_country"=>$request['first_country'],"second_country"=>$request['second_country']
         ];
         return response($data);
