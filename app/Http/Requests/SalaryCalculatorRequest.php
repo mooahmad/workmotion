@@ -16,7 +16,7 @@ class SalaryCalculatorRequest
             'first_country' => 'required',
             'second_country' => "required|different:first_country",
             "currency" => "required|in:EUR,USD,GBP",
-            "value" => "numeric",
+            "value" => "required|numeric",
             'allow'=>"required|boolean"
         ]);
         if ($validator->fails()) return $validator->errors();
